@@ -1,0 +1,12 @@
+.articlesList {
+  padding: 16px;
+}
+
+.item {
+  padding: 10px !important;
+
+  &:hover {
+    cursor: pointer !important;
+    background: rgba(56, 159, 255, 0.2);
+  }
+}

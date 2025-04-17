@@ -1,0 +1,13 @@
+.newFeedForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 32px;
+  border-bottom: 1px solid #ccc;
+
+  .feedUrlInput {
+    min-width: 400px !important
+  }
+
+}
