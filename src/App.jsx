@@ -23,6 +23,10 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [readArticles, setReadArticles] = useState(() => {
+    const saved = localStorage.getItem('readArticles');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const feedUrls = feeds.map((feed) => feed.url).join(',');
 
@@ -54,6 +58,10 @@ function App() {
 
     if (feeds.length > 0) loadArticles();
   }, [feedUrls]);
+
+  useEffect(() => {
+    localStorage.setItem('readArticles', JSON.stringify(readArticles));
+  }, [readArticles]);
 
   const handleAddFeed = async (url) => {
     const normalizedUrl = url.trim().toLowerCase();
@@ -118,6 +126,17 @@ function App() {
       article.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
     );
 
+  const articlesWithReadState = filteredArticles.map((article) => ({
+    ...article,
+    isRead: readArticles.includes(article.link),
+  }));
+
+  const markAsRead = (link) => {
+    if (!readArticles.includes(link)) {
+      setReadArticles([...readArticles, link]);
+    }
+  };
+
   return (
     <>
       <TopMenu onChange={(e) => setSearchQuery(e.target.value)} />
@@ -135,15 +154,21 @@ function App() {
           )}
         {filteredArticles.length > 0 && (
           <ArticlesList
-            articles={filteredArticles}
+            articles={articlesWithReadState}
             onClick={(article) => setSelectedArticle(article)}
           />
         )}
 
-        <ArticlePreview
-          article={selectedArticle}
-          onClose={() => setSelectedArticle(null)}
-        />
+        {selectedArticle && selectedArticle.title && (
+          <ArticlePreview
+            article={{
+              ...selectedArticle,
+              isRead: readArticles.includes(selectedArticle.link),
+            }}
+            onClose={() => setSelectedArticle(null)}
+            onMarkAsRead={markAsRead}
+          />
+        )}
         <ToastContainer theme='light' position='top-right' autoClose={9000} />
         {loading.active && <Loader msg={loading.msg} />}
         {!filteredArticles.length &&

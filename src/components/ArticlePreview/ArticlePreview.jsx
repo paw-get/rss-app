@@ -4,7 +4,7 @@ import ButtonFactory from '../ButtonFactory/ButtonFactory';
 
 import styles from './articlePreview.module.scss';
 
-export default function ArticlePreview({ article, onClose }) {
+export default function ArticlePreview({ article, onClose, onMarkAsRead }) {
   const [isClosing, setIsClosing] = useState(false);
   const previewRef = useRef();
 
@@ -49,6 +49,7 @@ export default function ArticlePreview({ article, onClose }) {
           <ButtonFactory
             onClick={() => {
               window.open(article.link, '_blank', 'noopener,noreferrer');
+              onMarkAsRead(article.link);
               startClose();
             }}
             type='primary'

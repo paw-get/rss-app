@@ -8,11 +8,17 @@ export default function ArticlesList({ articles, onClick }) {
       <div className='ui relaxed divided list'>
         {articles.map((article, index) => (
           <div
-            className={`item ${styles.item}`}
+            className={`item ${styles.item} ${
+              article.isRead ? styles.articleRead : ''
+            }`}
             key={index}
             onClick={() => onClick(article)}
           >
-            <i className='large file outline middle aligned icon'></i>
+            <i
+              className={`large file ${
+                article.isRead ? 'outline' : ''
+              } middle aligned icon`}
+            ></i>
             <div className='content'>
               <div className='header'>{article.title}</div>
               <div className='description'>Added: {article.pubDate}</div>
