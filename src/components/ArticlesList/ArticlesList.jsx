@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './articlesList.module.scss';
 
 export default function ArticlesList({ articles, onClick }) {

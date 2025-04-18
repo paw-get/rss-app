@@ -1,7 +1,8 @@
-import React from 'react';
-import { useRef, useState, useEffect } from 'react';
-import styles from './articlePreview.module.scss';
+import React, { useRef, useState, useEffect } from 'react';
+
 import ButtonFactory from '../ButtonFactory/ButtonFactory';
+
+import styles from './articlePreview.module.scss';
 
 export default function ArticlePreview({ article, onClose }) {
   const [isClosing, setIsClosing] = useState(false);
@@ -36,7 +37,7 @@ export default function ArticlePreview({ article, onClose }) {
     >
       <div className={styles.preview} ref={previewRef}>
         <button className={styles.closeBtn} onClick={startClose}>
-          ×
+          <i className='window close middle aligned icon'></i>
         </button>
         <h2>{article.title}</h2>
         <p>Created at: {new Date(article.pubDate).toLocaleString()}</p>

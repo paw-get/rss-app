@@ -1,19 +1,18 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import FeedForm from './components/FeedForm/FeedForm';
-import Loader from './components/Loader/Loader';
-import FeedList from './components/FeedList/FeedList';
-import { fetchFeed } from './utils/rssService';
+import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
-import useLoading from './hooks/useLoading';
-import ArticlePreview from './components/ArticlePreview/ArticlePreview';
-import Header from './components/Header/Header';
-import useDebouncedValue from './hooks/useDebounce';
-import TopMenu from './components/TopMenu/TopMenu';
 import styles from './App.module.scss';
+import ArticlePreview from './components/ArticlePreview/ArticlePreview';
 import ArticlesList from './components/ArticlesList/ArticlesList';
+import FeedForm from './components/FeedForm/FeedForm';
+import FeedList from './components/FeedList/FeedList';
+import Loader from './components/Loader/Loader';
+import TopMenu from './components/TopMenu/TopMenu';
 import ZeroState from './components/ZeroState/ZeroState';
+import useDebouncedValue from './hooks/useDebounce';
+import useLoading from './hooks/useLoading';
+import { fetchFeed } from './utils/rssService.js';
 
 function App() {
   const [loading, loadingActions] = useLoading();

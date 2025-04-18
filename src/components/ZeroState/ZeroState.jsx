@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './zeroState.module.scss';
 
 export default function ZeroState({ msg }) {

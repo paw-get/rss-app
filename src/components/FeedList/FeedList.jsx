@@ -1,7 +1,9 @@
 import React from 'react';
+
 import ButtonFactory from '../ButtonFactory/ButtonFactory';
-import styles from './feedList.module.scss';
 import Header from '../Header/Header';
+
+import styles from './feedList.module.scss';
 
 export default function FeedList({ feeds, onRemoveFeed, onToggleVisibility }) {
   return (

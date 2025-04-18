@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './buttonFactory.module.scss';
 
 export default function ButtonFactory({
