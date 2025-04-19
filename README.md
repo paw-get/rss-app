@@ -1,6 +1,6 @@
 # RSS Feed Reader
 
-Web application for managing and reading RSS feeds.
+Web application for managing and reading RSS feeds/
 
 ## Features
 
@@ -30,7 +30,7 @@ Web application for managing and reading RSS feeds.
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -45,19 +45,33 @@ cd rss-app
 
 ```bash
 npm install
-# or
-yarn install
 ```
 
 3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 4. Open your browser and navigate to `http://localhost:5173`
+
+## Testing
+
+The application includes comprehensive test coverage using Vitest and React Testing Library.
+
+### Running Tests
+
+To run the tests:
+
+```bash
+npx vitest
+```
+
+The tests cover:
+
+- Component rendering and behavior
+- User interactions
+- Feed visibility toggling
 
 ## Usage
 
@@ -87,6 +101,7 @@ yarn dev
 - Implements local storage for data persistence
 - Uses a CORS proxy for fetching RSS feeds
 - Implements debounced search for better performance
+- Comprehensive test suite using Vitest and React Testing Library
 
 ## Contributing
 
