@@ -64,7 +64,7 @@ The application includes comprehensive test coverage using Vitest and React Test
 To run the tests:
 
 ```bash
-npx vitest
+npm run test
 ```
 
 The tests cover:
