@@ -107,10 +107,19 @@ function App() {
     setArticles(updatedArticles);
   };
 
+  const handleUrlClick = (urlToShow) => {
+    const updatedFeeds = feeds.map((feed) => ({
+      ...feed,
+      visible: feed.url === urlToShow,
+    }));
+    setFeeds(updatedFeeds);
+  };
+
   const handleToggleVisibility = (urlToToggle) => {
-    const updatedFeeds = feeds.map((feed) =>
-      feed.url === urlToToggle ? { ...feed, visible: !feed.visible } : feed
-    );
+    const updatedFeeds = feeds.map((feed) => ({
+      ...feed,
+      visible: feed.url === urlToToggle ? !feed.visible : feed.visible,
+    }));
     setFeeds(updatedFeeds);
   };
 
@@ -126,7 +135,7 @@ function App() {
       article.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
     );
 
-  const articlesWithReadState = filteredArticles.map((article) => ({
+  const articlesWithReadFlag = filteredArticles.map((article) => ({
     ...article,
     isRead: readArticles.includes(article.link),
   }));
@@ -146,6 +155,7 @@ function App() {
           feeds={feeds}
           onRemoveFeed={handleRemoveFeed}
           onToggleVisibility={handleToggleVisibility}
+          onUrlClick={handleUrlClick}
         />
         {searchQuery.length > 0 &&
           feedUrls.length > 0 &&
@@ -154,7 +164,7 @@ function App() {
           )}
         {filteredArticles.length > 0 && (
           <ArticlesList
-            articles={articlesWithReadState}
+            articles={articlesWithReadFlag}
             onClick={(article) => setSelectedArticle(article)}
           />
         )}

@@ -1,12 +1,97 @@
-# React + Vite
+# RSS Feed Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web application for managing and reading RSS feeds.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Feed Management**
 
-## Expanding the ESLint configuration
+  - Add new RSS feeds
+  - Remove existing feeds
+  - Toggle feed visibility
+  - Click on feed URL to show only that feed's articles
+  - Use Show/Hide buttons to toggle individual feed visibility
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Article Management**
+
+  - View articles from all visible feeds
+  - Search through articles
+  - Mark articles as read
+  - Preview article content
+  - Open full article in new tab
+
+- **User Experience**
+  - Loading indicators
+  - Error notifications
+  - Persistent storage (feeds and read articles are saved locally)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:paw-get/rss-app.git
+cd rss-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Usage
+
+### Adding Feeds
+
+1. Enter the RSS feed URL in the input field at the top of the page
+2. Click "Add RSS feed" or press Enter
+3. The feed will be added to your list if valid
+
+### Managing Feeds
+
+- Click on a feed's URL to show only that feed's articles
+- Use the Show/Hide button to toggle individual feed visibility
+- Use the Remove button to delete a feed and its articles
+
+### Reading Articles
+
+- Click on an article to preview its content
+- Use the search bar to filter articles by title
+- Click "Read whole article" to open the full article in a new tab
+- Articles are automatically marked as read when opened
+
+## Technical Details
+
+- Built with React and Vite
+- Uses Semantic UI for styling
+- Implements local storage for data persistence
+- Uses a CORS proxy for fetching RSS feeds
+- Implements debounced search for better performance
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
+## License
+
+This project is licensed under the MIT License.

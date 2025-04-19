@@ -5,7 +5,12 @@ import Header from '../Header/Header';
 
 import styles from './feedList.module.scss';
 
-export default function FeedList({ feeds, onRemoveFeed, onToggleVisibility }) {
+export default function FeedList({
+  feeds,
+  onRemoveFeed,
+  onToggleVisibility,
+  onUrlClick,
+}) {
   return (
     <>
       {feeds.length > 0 && (
@@ -21,12 +26,20 @@ export default function FeedList({ feeds, onRemoveFeed, onToggleVisibility }) {
                 ></i>
                 <div className='content'>
                   <div className='header'>
-                    <span className={`${visible ? '' : styles.disabled}`}>
+                    <span
+                      className={`${styles.clickableHeader} ${
+                        visible ? '' : styles.disabled
+                      }`}
+                      onClick={() => onUrlClick(url)}
+                    >
                       {url}
                     </span>
                     <div className={styles.buttonContainer}>
                       <ButtonFactory
-                        onClick={() => onToggleVisibility(url)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onToggleVisibility(url);
+                        }}
                         type={visible ? 'warning' : 'accept'}
                         size='small'
                       >
@@ -35,7 +48,10 @@ export default function FeedList({ feeds, onRemoveFeed, onToggleVisibility }) {
                       <ButtonFactory
                         type='critical'
                         size='small'
-                        onClick={() => onRemoveFeed(url)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onRemoveFeed(url);
+                        }}
                       >
                         Remove
                       </ButtonFactory>
